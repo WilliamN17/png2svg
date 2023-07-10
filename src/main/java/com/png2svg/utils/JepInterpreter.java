@@ -17,15 +17,12 @@ public final class JepInterpreter {
   public JepInterpreter() {
   }
 
-  public void loadInterpreterPython(String path){
-    MainInterpreter.setJepLibraryPath(path);
-    // set path for python docs with python script to run
-    jepConf = new JepConfig();
-    jepConf.addIncludePaths(path);
-    this.pathExecutor = path;
-  }
-
-  public void createInterpreter(){
+  /**
+   *
+   * @param path
+   */
+  public void createInterpreter(String path){
+    loadInterpreterPython(path);
     subInterp = jepConf.createSubInterpreter();
   }
 
@@ -43,17 +40,26 @@ public final class JepInterpreter {
     }
   }
 
-
-
-  private String getDefaultPackagePython(){
-    return System.getProperty("user.dir")+"/src/main/python/";
-  }
-
   public String getPackagePython() {
     return packagePython;
   }
 
   public void setPackagePython(String packagePython) {
     this.packagePython = packagePython;
+  }
+
+  void loadInterpreterPython(String path){
+    MainInterpreter.setJepLibraryPath(path);
+    // set path for python docs with python script to run
+    jepConf = new JepConfig();
+    jepConf.addIncludePaths(path);
+    this.pathExecutor = path;
+  }
+
+
+
+
+  private String getDefaultPackagePython(){
+    return System.getProperty("user.dir")+"/src/main/python/";
   }
 }

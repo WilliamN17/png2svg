@@ -6,7 +6,3 @@ def transcode(input, output) -> int:
     return 1
 
 
-def test() -> int:
-    return transcode('/Users/rubynam/Desktop/projects/jni/src/main/python/qr.png',
-                     '/Users/rubynam/Desktop/projects/jni/src/main/python/dog.svg')
-
